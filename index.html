@@ -3,60 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARGOTECH — Bureau d'Études Géotechnique & Diagnostic Structural</title>
+<title>ARGOTECH — Bureau d'Etudes Geotechnique, Diagnostic & Instrumentation</title>
+<meta name="description" content="Argotech - Bureau d'etudes specialise en geotechnique, diagnostic structural, instrumentation et auscultation. 250+ clients, 3 agences en France.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
+/* ══════════════════════════════════════
+   ARGOTECH — Rebuild Claude B. Studio
+   Couleurs reelles : vert #a6c625, bleu #183d56
+   NOTE EMAIL: Images = placeholders haute qualite.
+   Mentionner dans l'email qu'on integrera leurs
+   vraies photos (chantiers, equipe, bureaux).
+   ══════════════════════════════════════ */
+
 :root {
-  --blue: #1B3A5C;
-  --blue-deep: #0F2640;
-  --blue-mid: #2A5580;
-  --blue-light: #3E6E9E;
-  --blue-pale: #E8EFF6;
-  --blue-ghost: #F3F7FB;
-  --terra: #C4704B;
-  --terra-light: #D4885F;
-  --terra-warm: #E8A882;
-  --terra-pale: #F5E6DC;
-  --sand: #F7F3EE;
-  --sand-warm: #EDE6DB;
-  --stone: #D5CCBF;
-  --grey: #6B7280;
-  --grey-light: #9CA3AF;
-  --charcoal: #1F2937;
-  --text: #2D3441;
-  --text-light: #5A6472;
-  --white: #FEFDFB;
-  --bg: #FAFAF7;
+  --green: #a6c625;
+  --green-light: #b8d445;
+  --green-pale: #e8f0c9;
+  --green-ghost: #f4f8e6;
+  --blue: #183d56;
+  --blue-mid: #1f5275;
+  --blue-light: #71a5c7;
+  --blue-pale: #d4e5f0;
+  --blue-ghost: #edf4f8;
+  --cream: #ebebdc;
+  --cream-warm: #f5f5ea;
+  --sand: #f8f8f2;
+  --text: #2a3542;
+  --text-light: #5a6a78;
+  --text-muted: #8a96a3;
+  --white: #fefefe;
+  --bg: #fafaf6;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Lato', sans-serif;
   color: var(--text);
   background: var(--bg);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ═══ GRAIN ═══ */
+h1, h2, h3, h4, h5 {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* ═══ SUBTLE GRAIN ═══ */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.018;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ═══ REVEAL ═══ */
+/* ═══ REVEAL ANIMATIONS ═══ */
 .rv {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .rv.vis { opacity: 1; transform: translateY(0); }
 .rv-d1 { transition-delay: 0.1s; }
@@ -64,6 +74,7 @@ body::after {
 .rv-d3 { transition-delay: 0.3s; }
 .rv-d4 { transition-delay: 0.4s; }
 .rv-d5 { transition-delay: 0.5s; }
+.rv-d6 { transition-delay: 0.6s; }
 
 /* ═══ NAV ═══ */
 nav {
@@ -71,63 +82,106 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1.3rem 3rem;
+  padding: 1.2rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
 }
 nav.scrolled {
-  background: rgba(250, 250, 247, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 rgba(27, 58, 92, 0.08);
-  padding: 0.9rem 3rem;
+  background: rgba(250, 250, 246, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(24, 61, 86, 0.07);
+  padding: 0.85rem 3rem;
 }
-.nav-mark {
+
+.nav-brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
   text-decoration: none;
 }
-.nav-mark-icon {
-  width: 32px;
-  height: 32px;
+.nav-logo {
+  width: 36px;
+  height: 36px;
   background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 6px;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+  overflow: hidden;
 }
-.nav-mark-icon span {
-  font-weight: 800;
-  font-size: 0.85rem;
+.nav-logo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--green);
+}
+.nav-logo span {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
   color: var(--white);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 .nav-name {
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: var(--blue-deep);
-  letter-spacing: 0.06em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--blue);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.2rem;
   list-style: none;
 }
 .nav-links a {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 600;
   color: var(--text-light);
   text-decoration: none;
   letter-spacing: 0.04em;
   transition: color 0.3s;
+  position: relative;
 }
-.nav-links a:hover { color: var(--terra); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--green);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.3rem;
+  background: var(--green);
+  color: var(--blue);
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background 0.3s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--green-light); transform: translateY(-1px); }
 
 .burger {
   display: none;
@@ -141,73 +195,67 @@ nav.scrolled {
   width: 22px;
   height: 2px;
   background: var(--blue);
-  margin: 4px 0;
+  margin: 5px 0;
   transition: 0.3s;
+  border-radius: 1px;
 }
 
 /* ═══ HERO ═══ */
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding: 8rem 3rem 5rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 3rem 4rem;
   position: relative;
   overflow: hidden;
+  background: var(--bg);
 }
 
-/* Strata background layers */
+/* Topographic lines background */
+.hero-topo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-topo svg {
+  position: absolute;
+  top: 0;
+  right: -5%;
+  width: 65%;
+  height: 100%;
+  opacity: 0.04;
+}
+
+/* Gradient wash */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(170deg, var(--bg) 0%, var(--sand) 40%, var(--sand-warm) 70%, var(--terra-pale) 100%);
+  background: linear-gradient(155deg, var(--bg) 0%, var(--cream-warm) 50%, var(--green-ghost) 100%);
   z-index: 0;
 }
 
-/* Diagonal strata lines */
-.strata {
+/* Green accent line */
+.hero-accent {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.strata-line {
-  position: absolute;
-  width: 200%;
-  height: 1px;
-  left: -20%;
-  transform-origin: center;
-}
-.strata-line:nth-child(1) { top: 25%; background: rgba(27,58,92,0.04); transform: rotate(-6deg); }
-.strata-line:nth-child(2) { top: 40%; background: rgba(196,112,75,0.05); transform: rotate(-4deg); }
-.strata-line:nth-child(3) { top: 55%; background: rgba(27,58,92,0.03); transform: rotate(-7deg); }
-.strata-line:nth-child(4) { top: 70%; background: rgba(196,112,75,0.04); transform: rotate(-3deg); }
-.strata-line:nth-child(5) { top: 85%; background: rgba(27,58,92,0.05); transform: rotate(-5deg); }
-
-/* Topo-grid pattern top-right */
-.topo-grid {
-  position: absolute;
-  top: 5%;
-  right: 0;
-  width: 45%;
-  height: 80%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.04;
-  background:
-    repeating-linear-gradient(0deg, var(--blue) 0px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(90deg, var(--blue) 0px, transparent 1px, transparent 40px);
+  left: 0;
+  top: 20%;
+  width: 6px;
+  height: 200px;
+  background: linear-gradient(to bottom, var(--green), transparent);
+  z-index: 1;
+  border-radius: 0 3px 3px 0;
 }
 
 .hero-inner {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 4rem;
-  max-width: 1200px;
+  max-width: 1220px;
   margin: 0 auto;
   width: 100%;
   align-items: center;
@@ -216,181 +264,246 @@ nav.scrolled {
 .hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 1rem;
-  background: rgba(27, 58, 92, 0.06);
-  border-left: 3px solid var(--terra);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  gap: 0.6rem;
+  padding: 0.4rem 1rem 0.4rem 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--blue-mid);
-  margin-bottom: 2rem;
+  color: var(--green);
+  margin-bottom: 1.8rem;
+}
+.hero-tag::before {
+  content: '';
+  width: 28px;
+  height: 3px;
+  background: var(--green);
+  border-radius: 2px;
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
-  font-weight: 800;
-  line-height: 1.05;
-  color: var(--blue-deep);
-  margin-bottom: 1.6rem;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.6rem, 4.8vw, 4rem);
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
 }
-.hero h1 .accent {
-  color: var(--terra);
-  font-weight: 700;
-}
-.hero h1 .serif {
-  font-family: 'Source Serif 4', serif;
+.hero h1 .green { color: var(--green); }
+.hero h1 .light {
+  font-weight: 300;
   font-style: italic;
-  font-weight: 400;
+  color: var(--blue-mid);
 }
 
 .hero-desc {
   font-size: 1.05rem;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--text-light);
-  max-width: 480px;
-  margin-bottom: 2.4rem;
+  max-width: 500px;
+  margin-bottom: 2.2rem;
   font-weight: 300;
+}
+.hero-desc strong {
+  font-weight: 700;
+  color: var(--text);
 }
 
 .hero-actions {
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0.9rem 2rem;
-  background: var(--blue);
-  color: var(--white);
+  padding: 0.95rem 2.2rem;
+  background: var(--green);
+  color: var(--blue);
   text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-  transition: background 0.35s;
+  border-radius: 5px;
+  transition: background 0.35s, transform 0.2s, box-shadow 0.35s;
+  box-shadow: 0 4px 16px rgba(166, 198, 37, 0.25);
 }
-.btn-primary:hover { background: var(--terra); }
-.btn-primary svg { width: 14px; height: 14px; }
+.btn-primary:hover {
+  background: var(--green-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(166, 198, 37, 0.3);
+}
+.btn-primary svg { width: 15px; height: 15px; }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.85rem 1.6rem;
-  border: 1.5px solid var(--blue-mid);
-  color: var(--blue-mid);
+  padding: 0.9rem 1.8rem;
+  border: 1.5px solid var(--blue-light);
+  color: var(--blue);
   text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
   letter-spacing: 0.04em;
-  transition: background 0.3s, color 0.3s;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
-.btn-outline:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.btn-outline:hover {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
 
-/* Hero right: visual block */
+/* Hero visual block */
 .hero-visual {
   position: relative;
 }
-.hero-visual-main {
+
+.hero-img-main {
   width: 100%;
   aspect-ratio: 4/3;
-  position: relative;
+  border-radius: 10px;
   overflow: hidden;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%);
+  position: relative;
+  box-shadow: 0 20px 60px rgba(24, 61, 86, 0.12);
 }
-/* Geological cross-section texture */
-.hero-visual-main::before {
+
+/* Sophisticated geological placeholder */
+.hero-img-main::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(175deg,
-      var(--blue-pale) 0%,
-      var(--sand-warm) 20%,
-      var(--stone) 35%,
-      var(--terra-pale) 50%,
-      var(--sand) 65%,
-      var(--blue-pale) 80%,
-      var(--sand-warm) 100%
+    radial-gradient(ellipse at 30% 40%, rgba(113, 165, 199, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(166, 198, 37, 0.15) 0%, transparent 50%),
+    linear-gradient(165deg,
+      #1a3d56 0%,
+      #1f5275 15%,
+      #2a6a90 30%,
+      #4a8aaa 42%,
+      #71a5c7 52%,
+      #8eb8a0 60%,
+      #a6c625 68%,
+      #8eb880 75%,
+      #71a5c7 82%,
+      #4a7a9a 90%,
+      #1a3d56 100%
     );
 }
-/* Strata layers in the image */
-.hero-visual-main::after {
+
+/* Bore-hole / cross-section overlay */
+.hero-img-main::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    repeating-linear-gradient(
-      172deg,
-      transparent 0px,
-      transparent 18px,
-      rgba(27,58,92,0.06) 18px,
-      rgba(27,58,92,0.06) 19px
+    repeating-linear-gradient(170deg,
+      transparent 0px, transparent 24px,
+      rgba(255,255,255,0.06) 24px, rgba(255,255,255,0.06) 25px
+    ),
+    repeating-linear-gradient(80deg,
+      transparent 0px, transparent 60px,
+      rgba(255,255,255,0.03) 60px, rgba(255,255,255,0.03) 61px
     );
 }
-.hero-visual-label {
+
+.hero-img-label {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.2rem 1.4rem;
-  background: rgba(15, 38, 64, 0.85);
-  color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  z-index: 1;
-}
-.hero-visual-label strong { font-weight: 600; color: var(--terra-warm); }
-
-/* Floating stat card */
-.hero-stat-float {
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  background: var(--white);
-  border: 1px solid rgba(27,58,92,0.08);
-  padding: 1.2rem 1.4rem;
-  box-shadow: 0 12px 32px rgba(27,58,92,0.08);
+  padding: 1.4rem 1.6rem;
+  background: linear-gradient(to top, rgba(24, 61, 86, 0.92), rgba(24, 61, 86, 0.6), transparent);
   z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
-.hero-stat-float .num {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--terra);
+.hero-img-label-text {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+}
+.hero-img-label-text strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+/* Floating cards */
+.hero-float {
+  position: absolute;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 1rem 1.3rem;
+  box-shadow: 0 8px 28px rgba(24, 61, 86, 0.1);
+  z-index: 3;
+  border: 1px solid rgba(24, 61, 86, 0.06);
+}
+.hero-float-top {
+  top: -16px;
+  right: -16px;
+}
+.hero-float-top .num {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--green);
   line-height: 1;
 }
-.hero-stat-float .lbl {
-  font-size: 0.68rem;
-  color: var(--grey);
+.hero-float-top .lbl {
+  font-size: 0.65rem;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-top: 0.2rem;
+  margin-top: 0.15rem;
+  font-weight: 700;
+}
+
+.hero-float-bottom {
+  bottom: 20px;
+  left: -24px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.hero-float-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--green-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-float-icon svg { width: 18px; height: 18px; color: var(--green); }
+.hero-float-bottom .tag {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+.hero-float-bottom .sub {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 /* ═══ METRICS STRIP ═══ */
 .metrics {
-  background: var(--blue-deep);
-  padding: 3rem;
+  background: var(--blue);
+  padding: 3.2rem 3rem;
   position: relative;
-}
-/* diagonal top edge */
-.metrics::before {
-  content: '';
-  position: absolute;
-  top: -30px;
-  left: 0;
-  right: 0;
-  height: 30px;
-  background: var(--blue-deep);
-  clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 .metrics-inner {
   max-width: 1100px;
@@ -410,21 +523,22 @@ nav.scrolled {
   top: 15%;
   height: 70%;
   width: 1px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
 }
 .metric-num {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: var(--terra-warm);
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--green);
   line-height: 1;
 }
 .metric-label {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 0.5rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* ═══ SECTION BASE ═══ */
@@ -434,274 +548,313 @@ section { position: relative; padding: 6rem 3rem; }
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--terra);
+  color: var(--green);
   margin-bottom: 1rem;
 }
 .sec-label::before {
   content: '';
   width: 24px;
-  height: 2px;
-  background: var(--terra);
+  height: 3px;
+  background: var(--green);
+  border-radius: 2px;
 }
 
 .sec-title {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  color: var(--blue-deep);
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+  font-weight: 800;
+  color: var(--blue);
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   max-width: 550px;
 }
-.sec-title .serif {
-  font-family: 'Source Serif 4', serif;
+.sec-title .light {
+  font-weight: 300;
   font-style: italic;
-  font-weight: 400;
+  color: var(--blue-mid);
 }
 
-/* ═══ EXPERTISE ═══ */
-.expertise {
+/* ═══ EXPERTISE / SERVICES ═══ */
+.services {
   background: var(--white);
 }
-.expertise-inner {
-  max-width: 1200px;
+.services-inner {
+  max-width: 1220px;
   margin: 0 auto;
 }
-.expertise-header {
+.services-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 3.5rem;
   gap: 2rem;
 }
-.expertise-header p {
-  max-width: 380px;
+.services-header p {
+  max-width: 400px;
   font-size: 0.92rem;
   color: var(--text-light);
-  line-height: 1.7;
+  line-height: 1.75;
   font-weight: 300;
 }
 
-.expertise-grid {
+.services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  gap: 1.2rem;
 }
-.exp-card {
-  padding: 2.4rem 2rem;
-  border: 1px solid rgba(27,58,92,0.06);
+
+.srv-card {
+  padding: 2.2rem 1.8rem;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid transparent;
   position: relative;
-  background: var(--white);
-  transition: background 0.4s, border-color 0.4s;
+  transition: background 0.4s, border-color 0.4s, transform 0.3s, box-shadow 0.4s;
   overflow: hidden;
 }
-.exp-card:hover {
-  background: var(--blue-ghost);
-  border-color: rgba(27,58,92,0.12);
+.srv-card:hover {
+  background: var(--white);
+  border-color: rgba(166, 198, 37, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(24, 61, 86, 0.06);
 }
-/* Diagonal accent on hover */
-.exp-card::before {
+
+/* Green top bar on hover */
+.srv-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
-  height: 0;
-  background: var(--terra);
-  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  right: 0;
+  height: 3px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.exp-card:hover::before { height: 100%; }
+.srv-card:hover::before { transform: scaleX(1); }
 
-.exp-num {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--terra);
-  letter-spacing: 0.1em;
-  margin-bottom: 1.2rem;
+.srv-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--green-pale);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.3rem;
+  transition: background 0.3s;
 }
-.exp-card h3 {
-  font-size: 1.2rem;
+.srv-card:hover .srv-icon { background: var(--green); }
+.srv-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--green);
+  transition: color 0.3s;
+}
+.srv-card:hover .srv-icon svg { color: var(--white); }
+
+.srv-num {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.7rem;
+}
+.srv-card h3 {
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--blue-deep);
-  margin-bottom: 0.8rem;
+  color: var(--blue);
+  margin-bottom: 0.7rem;
   letter-spacing: -0.01em;
 }
-.exp-card p {
-  font-size: 0.85rem;
-  line-height: 1.65;
+.srv-card p {
+  font-size: 0.84rem;
+  line-height: 1.7;
   color: var(--text-light);
   font-weight: 300;
 }
-.exp-tags {
+.srv-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
-  margin-top: 1.2rem;
+  margin-top: 1.1rem;
 }
-.exp-tags span {
-  font-size: 0.65rem;
-  font-weight: 500;
+.srv-tags span {
+  font-size: 0.63rem;
+  font-weight: 600;
   padding: 0.2rem 0.6rem;
-  background: rgba(27,58,92,0.04);
+  background: var(--green-ghost);
   color: var(--blue-mid);
+  border-radius: 3px;
   letter-spacing: 0.02em;
 }
-/* Last card spans 2 cols on wide screen */
-.exp-card.wide {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
-  align-items: center;
-}
-.exp-card.wide .exp-card-inner { display: contents; }
 
-/* ═══ PROJECTS ═══ */
-.projects {
+/* ═══ REFERENCES ═══ */
+.refs {
   background: var(--sand);
   position: relative;
 }
-/* Diagonal separator */
-.projects::before {
-  content: '';
-  position: absolute;
-  top: -40px;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: var(--sand);
-  clip-path: polygon(0 100%, 100% 0, 100% 100%);
-}
-.projects-inner {
-  max-width: 1200px;
+.refs-inner {
+  max-width: 1220px;
   margin: 0 auto;
 }
-.projects-header { margin-bottom: 3.5rem; }
-.projects-subtitle {
+.refs-header { margin-bottom: 3rem; }
+.refs-subtitle {
   font-size: 0.95rem;
   color: var(--text-light);
-  max-width: 480px;
-  line-height: 1.7;
+  max-width: 500px;
+  line-height: 1.75;
   font-weight: 300;
   margin-top: 1rem;
 }
 
-.projects-grid {
+/* Projects cards */
+.refs-projects {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   grid-template-rows: auto auto;
   gap: 1.2rem;
+  margin-bottom: 3rem;
 }
-.proj-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(27,58,92,0.06);
-  background: var(--white);
-  transition: border-color 0.3s, transform 0.4s;
-}
-.proj-card:hover {
-  border-color: var(--terra-light);
-  transform: translateY(-4px);
-}
-.proj-card.feat { grid-row: span 2; }
 
-.proj-img {
+.ref-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(24, 61, 86, 0.05);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.ref-card:hover {
+  border-color: rgba(166, 198, 37, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(24, 61, 86, 0.08);
+}
+.ref-card.feat { grid-row: span 2; }
+
+.ref-img {
   width: 100%;
   aspect-ratio: 16/10;
   position: relative;
   overflow: hidden;
 }
-.proj-card.feat .proj-img {
+.ref-card.feat .ref-img {
   height: 100%;
   aspect-ratio: auto;
 }
-/* Geological texture backgrounds */
-.proj-img.geo-1 {
-  background: linear-gradient(160deg, var(--blue-pale) 0%, var(--sand-warm) 30%, var(--stone) 50%, var(--terra-pale) 70%, var(--sand) 100%);
+
+/* Geological/engineering placeholder backgrounds */
+.ref-img.geo-stade {
+  background:
+    radial-gradient(ellipse at 40% 50%, rgba(113, 165, 199, 0.4) 0%, transparent 60%),
+    linear-gradient(160deg, #1a3d56 0%, #2a6a90 30%, #4a8aaa 50%, #71a5c7 70%, #d4e5f0 100%);
 }
-.proj-img.geo-2 {
-  background: linear-gradient(145deg, var(--sand) 0%, var(--stone) 40%, var(--blue-pale) 70%, var(--sand-warm) 100%);
+.ref-img.geo-funiculaire {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(166, 198, 37, 0.3) 0%, transparent 55%),
+    linear-gradient(170deg, #2a5540 0%, #4a8060 25%, #7aaa70 45%, #a6c625 65%, #e8f0c9 100%);
 }
-.proj-img.geo-3 {
-  background: linear-gradient(170deg, var(--terra-pale) 0%, var(--sand-warm) 35%, var(--blue-pale) 65%, var(--stone) 100%);
+.ref-img.geo-viaduc {
+  background:
+    radial-gradient(ellipse at 60% 55%, rgba(24, 61, 86, 0.3) 0%, transparent 50%),
+    linear-gradient(155deg, #3a3a3a 0%, #5a6a6a 20%, #7a8a8a 40%, #9aaa9a 60%, #bacebd 80%, #d4e5f0 100%);
 }
-.proj-img.geo-4 {
-  background: linear-gradient(155deg, var(--blue-pale) 0%, var(--sand) 30%, var(--terra-pale) 60%, var(--stone) 100%);
-}
-/* Strata overlay on all */
-.proj-img::after {
+/* Strata overlay */
+.ref-img::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    repeating-linear-gradient(175deg, transparent 0px, transparent 22px, rgba(27,58,92,0.04) 22px, rgba(27,58,92,0.04) 23px);
+    repeating-linear-gradient(172deg, transparent 0px, transparent 20px, rgba(255,255,255,0.05) 20px, rgba(255,255,255,0.05) 21px);
 }
 
-.proj-info {
+/* Icon overlay on image */
+.ref-img-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.ref-img-icon svg { width: 24px; height: 24px; color: rgba(255,255,255,0.8); }
+
+.ref-info {
   padding: 1.4rem 1.6rem;
 }
-.proj-info h4 {
-  font-size: 1.05rem;
+.ref-info h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.02rem;
   font-weight: 700;
-  color: var(--blue-deep);
+  color: var(--blue);
   margin-bottom: 0.3rem;
 }
-.proj-info p {
+.ref-info p {
   font-size: 0.78rem;
   color: var(--text-light);
   font-weight: 400;
 }
-.proj-type {
+.ref-type {
   display: inline-block;
-  font-size: 0.62rem;
-  font-weight: 600;
-  color: var(--terra);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--green);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 0.6rem;
-  padding: 0.2rem 0.5rem;
-  background: var(--terra-pale);
+  padding: 0.2rem 0.6rem;
+  background: var(--green-ghost);
+  border-radius: 3px;
 }
 
-/* More refs */
-.projects-more {
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(27,58,92,0.08);
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+/* Client logos strip */
+.refs-clients {
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(24, 61, 86, 0.06);
 }
-.projects-more-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--blue-mid);
+.refs-clients-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.refs-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+}
+.refs-logos .client-name {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text);
+  opacity: 0.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: opacity 0.3s;
   white-space: nowrap;
 }
-.projects-more-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.projects-more-tags span {
-  font-size: 0.76rem;
-  padding: 0.4rem 0.9rem;
-  border: 1px solid rgba(27,58,92,0.1);
-  color: var(--text);
-  background: var(--white);
-  font-weight: 400;
-  transition: border-color 0.3s, background 0.3s;
-}
-.projects-more-tags span:hover {
-  border-color: var(--terra);
-  background: var(--terra-pale);
-}
+.refs-logos .client-name:hover { opacity: 0.5; }
 
 /* ═══ CERTIFICATIONS ═══ */
 .certifs {
@@ -711,17 +864,17 @@ section { position: relative; padding: 6rem 3rem; }
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 4rem;
   align-items: center;
 }
-.certifs-content .sec-title { margin-bottom: 1.4rem; }
+.certifs-content .sec-title { margin-bottom: 1.2rem; }
 .certifs-text {
   font-size: 0.95rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--text-light);
   font-weight: 300;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 .certifs-list {
   list-style: none;
@@ -736,6 +889,7 @@ section { position: relative; padding: 6rem 3rem; }
   font-size: 0.88rem;
   color: var(--text);
   line-height: 1.5;
+  font-weight: 400;
 }
 .certifs-list li::before {
   content: '';
@@ -743,8 +897,8 @@ section { position: relative; padding: 6rem 3rem; }
   height: 8px;
   flex-shrink: 0;
   margin-top: 0.35rem;
-  background: var(--terra);
-  clip-path: polygon(0 0, 100% 0, 100% 60%, 60% 100%, 0 100%);
+  background: var(--green);
+  border-radius: 2px;
 }
 
 .certifs-cards {
@@ -753,162 +907,259 @@ section { position: relative; padding: 6rem 3rem; }
   gap: 1rem;
 }
 .certif-card {
-  padding: 2rem 1.6rem;
-  border: 1px solid rgba(27,58,92,0.08);
-  background: var(--blue-ghost);
+  padding: 2rem 1.5rem;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid transparent;
   text-align: center;
-  transition: border-color 0.3s, transform 0.3s;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 .certif-card:hover {
-  border-color: var(--terra-light);
+  border-color: rgba(166, 198, 37, 0.2);
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(24, 61, 86, 0.05);
 }
-.certif-icon {
-  width: 48px;
-  height: 48px;
+.certif-badge {
+  width: 50px;
+  height: 50px;
   margin: 0 auto 1rem;
   background: var(--blue);
+  border-radius: 10px;
   color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 0.85rem;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 0.8rem;
+  position: relative;
+}
+.certif-badge::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 25%;
+  right: 25%;
+  height: 3px;
+  background: var(--green);
+  border-radius: 2px;
 }
 .certif-card h4 {
-  font-size: 0.95rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.92rem;
   font-weight: 700;
-  color: var(--blue-deep);
-  margin-bottom: 0.4rem;
+  color: var(--blue);
+  margin-bottom: 0.35rem;
 }
 .certif-card p {
   font-size: 0.75rem;
   color: var(--text-light);
-  line-height: 1.5;
+  line-height: 1.55;
   font-weight: 300;
 }
 
-/* ═══ CONTACT ═══ */
-.contact {
-  background: var(--blue-deep);
-  color: var(--white);
+/* ═══ IMPLANTATIONS ═══ */
+.locations {
+  background: var(--sand);
+}
+.locations-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.locations-header { margin-bottom: 3rem; }
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.loc-card {
+  padding: 2.2rem 2rem;
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid rgba(24, 61, 86, 0.05);
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.loc-card:hover {
+  border-color: rgba(166, 198, 37, 0.2);
+  box-shadow: 0 8px 24px rgba(24, 61, 86, 0.05);
+}
+.loc-card.hq { border-left: 4px solid var(--green); }
+.loc-badge {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.7rem;
+  background: var(--green-ghost);
+  border-radius: 3px;
+  margin-bottom: 1rem;
+}
+.loc-card h4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 0.8rem;
+}
+.loc-card address {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.loc-card address a {
+  color: var(--blue-mid);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.loc-card address a:hover { color: var(--green); }
+
+.loc-zones {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.loc-zones span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(24, 61, 86, 0.08);
+  color: var(--text);
+  border-radius: 20px;
+  background: var(--bg);
+}
+
+/* ═══ CONTACT CTA ═══ */
+.cta {
+  background: var(--blue);
+  padding: 5rem 3rem;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
-.contact::before {
-  content: '';
-  position: absolute;
-  top: -40px;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: var(--blue-deep);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-}
-/* Grid pattern overlay */
-.contact-grid-bg {
+/* Grid pattern */
+.cta-grid {
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.025;
   background:
     repeating-linear-gradient(0deg, var(--white) 0px, transparent 1px, transparent 50px),
     repeating-linear-gradient(90deg, var(--white) 0px, transparent 1px, transparent 50px);
   pointer-events: none;
 }
+/* Green glow */
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(166, 198, 37, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-.contact-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
+.cta-inner {
   position: relative;
   z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
 }
-
-.contact .sec-label { color: var(--terra-warm); }
-.contact .sec-label::before { background: var(--terra-warm); }
-.contact .sec-title { color: var(--white); max-width: 400px; }
-.contact .sec-title .serif { color: var(--terra-warm); }
-
-.contact-desc {
+.cta .sec-label {
+  color: var(--green);
+  justify-content: center;
+}
+.cta .sec-label::before { background: var(--green); }
+.cta h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.cta h2 .green { color: var(--green); }
+.cta-desc {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.5);
   line-height: 1.8;
-  margin-top: 1.2rem;
+  margin-bottom: 2rem;
   font-weight: 300;
-  max-width: 400px;
 }
-.contact-email-link {
+.cta-email {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  margin-top: 2rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--terra-warm);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--green);
   text-decoration: none;
-  border-bottom: 2px solid rgba(196,112,75,0.3);
+  border-bottom: 2px solid rgba(166, 198, 37, 0.3);
   padding-bottom: 4px;
   transition: border-color 0.3s;
+  margin-bottom: 2.5rem;
 }
-.contact-email-link:hover { border-color: var(--terra); }
+.cta-email:hover { border-color: var(--green); }
 
-.contact-card-wrap {
+.cta-actions {
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
-.contact-card {
-  padding: 1.8rem;
-  border: 1px solid rgba(196,112,75,0.12);
-  background: rgba(255,255,255,0.03);
-  transition: border-color 0.3s;
+.cta .btn-primary {
+  background: var(--green);
+  color: var(--blue);
 }
-.contact-card:hover { border-color: rgba(196,112,75,0.3); }
-.contact-card-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--terra-warm);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.7rem;
+.cta .btn-primary:hover {
+  background: var(--green-light);
 }
-.contact-card p {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.6;
-  font-weight: 300;
+.cta .btn-outline {
+  border-color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
 }
-.contact-card a {
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
-  transition: color 0.3s;
+.cta .btn-outline:hover {
+  border-color: var(--green);
+  background: rgba(166, 198, 37, 0.1);
+  color: var(--green);
 }
-.contact-card a:hover { color: var(--terra-warm); }
 
 /* ═══ FOOTER ═══ */
 footer {
-  background: var(--blue-deep);
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 1.8rem 3rem;
+  background: var(--blue);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 1.6rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 footer p {
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.25);
 }
-footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+footer a {
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+footer a:hover { color: var(--green); }
 
 /* ═══ RESPONSIVE ═══ */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   nav { padding: 1rem 1.5rem; }
   nav.scrolled { padding: 0.8rem 1.5rem; }
-  .nav-links { display: none; }
+  .nav-links, .nav-cta { display: none; }
   .burger { display: block; }
+
+  /* Mobile menu */
   .nav-links.open {
     display: flex;
     flex-direction: column;
@@ -920,42 +1171,44 @@ footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
     gap: 2rem;
     z-index: 999;
   }
-  .nav-links.open a { font-size: 1.1rem; color: var(--blue-deep); }
+  .nav-links.open a { font-size: 1.1rem; color: var(--blue); }
+  .nav-links.open a::after { display: none; }
 
   section { padding: 4rem 1.5rem; }
-  .hero { padding: 7rem 1.5rem 3rem; }
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 2.4rem; }
+  .hero { padding: 7rem 1.5rem 3rem; min-height: auto; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero h1 { font-size: 2.2rem; }
   .hero-visual { order: -1; }
-  .hero-stat-float { top: -10px; right: -10px; }
-  .topo-grid { display: none; }
+  .hero-float-top { top: -10px; right: -8px; }
+  .hero-float-bottom { left: -8px; bottom: 12px; }
+  .hero-topo { display: none; }
+  .hero-accent { display: none; }
 
-  .metrics::before { height: 20px; top: -20px; }
   .metrics-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .metric:nth-child(2)::after { display: none; }
 
-  .expertise-header { flex-direction: column; align-items: flex-start; }
-  .expertise-grid { grid-template-columns: 1fr; }
-  .exp-card.wide { grid-column: span 1; display: block; }
+  .services-header { flex-direction: column; align-items: flex-start; }
+  .services-grid { grid-template-columns: 1fr; }
 
-  .projects-grid { grid-template-columns: 1fr; }
-  .proj-card.feat { grid-row: span 1; }
+  .refs-projects { grid-template-columns: 1fr; }
+  .ref-card.feat { grid-row: span 1; }
 
-  .certifs-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .certifs-inner { grid-template-columns: 1fr; gap: 2rem; }
   .certifs-cards { grid-template-columns: 1fr 1fr; }
 
-  .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .contact::before { height: 25px; top: -25px; }
+  .locations-grid { grid-template-columns: 1fr; }
 
-  footer { flex-direction: column; gap: 0.6rem; text-align: center; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 
-@media (max-width: 500px) {
-  .hero h1 { font-size: 1.9rem; }
-  .sec-title { font-size: 1.7rem; }
+@media (max-width: 520px) {
+  .hero h1 { font-size: 1.85rem; }
+  .sec-title { font-size: 1.6rem; }
   .metrics-inner { grid-template-columns: 1fr 1fr; }
   .certifs-cards { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
+  .refs-logos { gap: 1rem 2rem; }
+  .refs-logos .client-name { font-size: 0.8rem; }
 }
 </style>
 </head>
@@ -963,16 +1216,20 @@ footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-mark">
-    <div class="nav-mark-icon"><span>A</span></div>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo"><span>A</span></div>
     <span class="nav-name">Argotech</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#projets">Références</a></li>
+    <li><a href="#services">Expertises</a></li>
+    <li><a href="#references">References</a></li>
     <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#implantations">Implantations</a></li>
   </ul>
+  <a href="#contact" class="nav-cta">
+    Nous contacter
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
   <button class="burger" id="burger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -980,43 +1237,62 @@ footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="strata">
-    <div class="strata-line"></div>
-    <div class="strata-line"></div>
-    <div class="strata-line"></div>
-    <div class="strata-line"></div>
-    <div class="strata-line"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-topo">
+    <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Topographic contour lines -->
+      <ellipse cx="300" cy="300" rx="280" ry="220" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6" color="var(--blue)"/>
+      <ellipse cx="310" cy="290" rx="240" ry="180" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5" color="var(--blue)"/>
+      <ellipse cx="320" cy="280" rx="200" ry="150" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5" color="var(--blue)"/>
+      <ellipse cx="310" cy="275" rx="160" ry="120" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4" color="var(--blue)"/>
+      <ellipse cx="305" cy="270" rx="120" ry="90" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4" color="var(--blue)"/>
+      <ellipse cx="300" cy="268" rx="80" ry="60" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3" color="var(--blue)"/>
+      <ellipse cx="298" cy="265" rx="45" ry="35" stroke="currentColor" stroke-width="1" fill="none" opacity="0.3" color="var(--blue)"/>
+    </svg>
   </div>
-  <div class="topo-grid"></div>
 
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-tag rv">Bureau d'Études Géotechnique</div>
+      <div class="hero-tag rv">Bureau d'Etudes Geotechnique & Diagnostic</div>
       <h1 class="rv rv-d1">
         L'expertise<br>
-        du <span class="serif">sol</span> à la<br>
-        <span class="accent">structure</span>
+        <span class="light">du sol</span> a la<br>
+        <span class="green">structure</span>
       </h1>
       <p class="hero-desc rv rv-d2">
-        Études géotechniques, diagnostic structural et hydrogéologie — ARGOTECH accompagne maîtres d'ouvrage, architectes et entreprises sur les projets les plus exigeants du sud de la France.
+        <strong>Geotechnique, diagnostic structural, instrumentation</strong> et auscultation
+        — ARGOTECH accompagne maitres d'ouvrage, architectes et entreprises
+        sur les projets les plus exigeants depuis la region PACA jusqu'en Ile-de-France.
       </p>
       <div class="hero-actions rv rv-d3">
         <a href="#contact" class="btn-primary">
           Nous contacter
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#expertise" class="btn-outline">Nos expertises</a>
+        <a href="#services" class="btn-outline">Nos expertises</a>
       </div>
     </div>
 
     <div class="hero-visual rv rv-d2">
-      <div class="hero-stat-float">
+      <div class="hero-float hero-float-top">
         <div class="num">250+</div>
-        <div class="lbl">Clients accompagnés</div>
+        <div class="lbl">Clients</div>
       </div>
-      <div class="hero-visual-main">
-        <div class="hero-visual-label">
-          <strong>Diagnostic structural</strong> — Analyse et expertise d'ouvrages d'art en région PACA
+      <div class="hero-float hero-float-bottom">
+        <div class="hero-float-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div>
+          <div class="tag">OPQIBI Certifie</div>
+          <div class="sub">Ingenierie geotechnique</div>
+        </div>
+      </div>
+      <div class="hero-img-main">
+        <div class="hero-img-label">
+          <div class="hero-img-label-text">
+            <strong>Diagnostic structural</strong>
+            Analyse et expertise d'ouvrages d'art en region PACA
+          </div>
         </div>
       </div>
     </div>
@@ -1028,148 +1304,193 @@ footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
   <div class="metrics-inner">
     <div class="metric rv">
       <div class="metric-num">250+</div>
-      <div class="metric-label">Clients</div>
+      <div class="metric-label">Clients accompagnes</div>
     </div>
     <div class="metric rv rv-d1">
       <div class="metric-num">3</div>
       <div class="metric-label">Agences en France</div>
     </div>
     <div class="metric rv rv-d2">
-      <div class="metric-num">5</div>
-      <div class="metric-label">Domaines d'expertise</div>
+      <div class="metric-num">15+</div>
+      <div class="metric-label">Ingenieurs qualifies</div>
     </div>
     <div class="metric rv rv-d3">
       <div class="metric-num">OPQIBI</div>
-      <div class="metric-label">Qualification certifiée</div>
+      <div class="metric-label">Qualification certifiee</div>
     </div>
   </div>
 </div>
 
-<!-- EXPERTISE -->
-<section class="expertise" id="expertise">
-  <div class="expertise-inner">
-    <div class="expertise-header">
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
       <div>
         <div class="sec-label rv">Nos expertises</div>
-        <h2 class="sec-title rv rv-d1">Cinq domaines pour<br>une vision <span class="serif">complète</span></h2>
+        <h2 class="sec-title rv rv-d1">Une approche <span class="light">globale</span><br>de l'ingenierie des sols</h2>
       </div>
       <p class="rv rv-d2">
-        De la reconnaissance des sols à l'inspection des structures, nous couvrons l'ensemble de la chaîne technique.
+        De la reconnaissance des sols a l'auscultation des structures,
+        nous couvrons l'ensemble de la chaine technique avec rigueur et independance.
       </p>
     </div>
 
-    <div class="expertise-grid">
-      <div class="exp-card rv">
-        <div class="exp-num">01</div>
-        <h3>Géotechnique</h3>
-        <p>Études de sol, sondages et essais in situ pour caractériser les terrains et dimensionner les fondations adaptées à chaque projet.</p>
-        <div class="exp-tags">
+    <div class="services-grid">
+      <div class="srv-card rv">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="srv-num">01</div>
+        <h3>Geotechnique</h3>
+        <p>Etudes de sol (missions G1 a G5), sondages, essais in situ et en laboratoire. Dimensionnement des fondations et analyse des risques geotechniques.</p>
+        <div class="srv-tags">
           <span>Sondages</span>
           <span>Essais in situ</span>
-          <span>Fondations spéciales</span>
+          <span>Fondations</span>
+          <span>G1-G5</span>
         </div>
       </div>
 
-      <div class="exp-card rv rv-d1">
-        <div class="exp-num">02</div>
+      <div class="srv-card rv rv-d1">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h.01M15 12h.01"/></svg>
+        </div>
+        <div class="srv-num">02</div>
         <h3>Diagnostic Structural</h3>
-        <p>Expertise des structures béton, bois et métal. Pathologie des ouvrages, analyse de fissuration et recommandations de confortement.</p>
-        <div class="exp-tags">
-          <span>Béton</span>
+        <p>Expertise des structures beton, bois et metal. Pathologie des ouvrages, analyse de fissuration, evaluations de capacite portante et preconisations de confortement.</p>
+        <div class="srv-tags">
+          <span>Beton</span>
           <span>Bois</span>
-          <span>Métal</span>
+          <span>Metal</span>
           <span>Pathologie</span>
         </div>
       </div>
 
-      <div class="exp-card rv rv-d2">
-        <div class="exp-num">03</div>
-        <h3>Hydrogéologie</h3>
-        <p>Études hydrogéologiques, gestion des eaux souterraines, piézométrie et modélisation des écoulements pour vos projets.</p>
-        <div class="exp-tags">
-          <span>Piézométrie</span>
+      <div class="srv-card rv rv-d2">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="srv-num">03</div>
+        <h3>Instrumentation & Auscultation</h3>
+        <p>Surveillance continue des structures par capteurs automatises : deformations, deplacements, vibrations, temperatures. Systemes d'alerte en temps reel.</p>
+        <div class="srv-tags">
+          <span>Capteurs</span>
+          <span>Monitoring</span>
+          <span>Temps reel</span>
+          <span>Alertes</span>
+        </div>
+      </div>
+
+      <div class="srv-card rv rv-d3">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="srv-num">04</div>
+        <h3>Hydrogeologie</h3>
+        <p>Etudes hydrogeologiques, gestion des eaux souterraines, piezometrie et modelisation des ecoulements. Evaluation des risques d'inondation.</p>
+        <div class="srv-tags">
+          <span>Piezometrie</span>
           <span>Eaux souterraines</span>
-          <span>Modélisation</span>
+          <span>Inondation</span>
         </div>
       </div>
 
-      <div class="exp-card rv rv-d3">
-        <div class="exp-num">04</div>
-        <h3>Contrôle Extérieur</h3>
-        <p>Supervision de travaux et contrôle qualité chantier. Essais de conformité pour garantir le respect des spécifications techniques.</p>
-        <div class="exp-tags">
+      <div class="srv-card rv rv-d4">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="srv-num">05</div>
+        <h3>Controle Exterieur</h3>
+        <p>Supervision de travaux et controle qualite chantier. Essais de conformite, controle des materiaux et validation du respect des specifications techniques.</p>
+        <div class="srv-tags">
           <span>Supervision</span>
-          <span>Qualité</span>
-          <span>Conformité</span>
+          <span>Qualite</span>
+          <span>Conformite</span>
         </div>
       </div>
 
-      <div class="exp-card wide rv rv-d4">
-        <div>
-          <div class="exp-num">05</div>
-          <h3>Assistance Technique</h3>
+      <div class="srv-card rv rv-d5">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
         </div>
-        <div>
-          <p>Maîtrise d'œuvre géotechnique et assistance aux maîtres d'ouvrage. Nous vous accompagnons de la phase conception à la réception des travaux.</p>
-          <div class="exp-tags">
-            <span>Maîtrise d'œuvre</span>
-            <span>AMO</span>
-            <span>Suivi de chantier</span>
-          </div>
+        <div class="srv-num">06</div>
+        <h3>Assistance Technique</h3>
+        <p>Maitrise d'oeuvre geotechnique, AMO et assistance aux maitres d'ouvrage. Accompagnement de la conception a la reception des travaux.</p>
+        <div class="srv-tags">
+          <span>Maitrise d'oeuvre</span>
+          <span>AMO</span>
+          <span>Suivi chantier</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section class="projects" id="projets">
-  <div class="projects-inner">
-    <div class="projects-header">
-      <div class="sec-label rv">Références</div>
-      <h2 class="sec-title rv rv-d1">Des projets d'envergure<br>en <span class="serif">région PACA</span> et au-delà</h2>
-      <p class="projects-subtitle rv rv-d2">
-        Infrastructures, ouvrages d'art, bâtiments publics — notre expérience couvre les défis techniques les plus variés.
+<!-- REFERENCES -->
+<section class="refs" id="references">
+  <div class="refs-inner">
+    <div class="refs-header">
+      <div class="sec-label rv">References</div>
+      <h2 class="sec-title rv rv-d1">Des projets <span class="light">d'envergure</span><br>partout en France</h2>
+      <p class="refs-subtitle rv rv-d2">
+        Infrastructures, ouvrages d'art, batiments publics — notre experience
+        s'etend des projets locaux aux grands chantiers nationaux.
       </p>
     </div>
 
-    <div class="projects-grid">
-      <div class="proj-card feat rv">
-        <div class="proj-img geo-1" role="img" aria-label="Stade Vélodrome de Marseille — diagnostic structural complet de l'enceinte sportive"></div>
-        <div class="proj-info">
-          <h4>Stade Vélodrome de Marseille</h4>
+    <div class="refs-projects">
+      <div class="ref-card feat rv">
+        <div class="ref-img geo-stade" role="img" aria-label="Stade Velodrome de Marseille">
+          <div class="ref-img-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/></svg>
+          </div>
+        </div>
+        <div class="ref-info">
+          <h4>Stade Velodrome de Marseille</h4>
           <p>Diagnostic structural complet de l'enceinte sportive</p>
-          <span class="proj-type">Diagnostic structural</span>
+          <span class="ref-type">Diagnostic structural</span>
         </div>
       </div>
 
-      <div class="proj-card rv rv-d1">
-        <div class="proj-img geo-2" role="img" aria-label="Funiculaire des Arcs — études géotechniques en terrain montagneux"></div>
-        <div class="proj-info">
+      <div class="ref-card rv rv-d1">
+        <div class="ref-img geo-funiculaire" role="img" aria-label="Funiculaire des Arcs">
+          <div class="ref-img-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+        </div>
+        <div class="ref-info">
           <h4>Funiculaire des Arcs</h4>
-          <p>Études géotechniques en montagne</p>
-          <span class="proj-type">Géotechnique</span>
+          <p>Etudes geotechniques en terrain montagneux</p>
+          <span class="ref-type">Geotechnique</span>
         </div>
       </div>
 
-      <div class="proj-card rv rv-d2">
-        <div class="proj-img geo-3" role="img" aria-label="Viaducs autoroutiers — inspection et diagnostic d'ouvrages d'art"></div>
-        <div class="proj-info">
+      <div class="ref-card rv rv-d2">
+        <div class="ref-img geo-viaduc" role="img" aria-label="Viaducs autoroutiers">
+          <div class="ref-img-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 18h20"/><path d="M6 18V6"/><path d="M18 18V6"/><path d="M2 6h20"/><path d="M12 18V6"/></svg>
+          </div>
+        </div>
+        <div class="ref-info">
           <h4>Viaducs Autoroutiers</h4>
           <p>Inspection et diagnostic d'ouvrages d'art</p>
-          <span class="proj-type">Inspection</span>
+          <span class="ref-type">Inspection & Auscultation</span>
         </div>
       </div>
     </div>
 
-    <div class="projects-more rv">
-      <span class="projects-more-label">Aussi parmi nos références :</span>
-      <div class="projects-more-tags">
-        <span>Infrastructures PACA</span>
-        <span>Construction neuve</span>
-        <span>Réhabilitation</span>
-        <span>Ouvrages d'art</span>
-        <span>Bâtiments publics</span>
+    <!-- Clients -->
+    <div class="refs-clients rv rv-d3">
+      <div class="refs-clients-label">Ils nous font confiance</div>
+      <div class="refs-logos">
+        <span class="client-name">NGE</span>
+        <span class="client-name">Eiffage</span>
+        <span class="client-name">SNCF</span>
+        <span class="client-name">ADP</span>
+        <span class="client-name">ASF</span>
+        <span class="client-name">SOGEA</span>
+        <span class="client-name">Arcadis</span>
+        <span class="client-name">Spie Batignolles</span>
       </div>
     </div>
   </div>
@@ -1179,99 +1500,168 @@ footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
 <section class="certifs" id="certifications">
   <div class="certifs-inner">
     <div class="certifs-content">
-      <div class="sec-label rv">Engagements</div>
-      <h2 class="sec-title rv rv-d1">Qualifiés, certifiés,<br><span class="serif">engagés</span></h2>
+      <div class="sec-label rv">Engagements qualite</div>
+      <h2 class="sec-title rv rv-d1">Qualifies, certifies,<br><span class="light">independants</span></h2>
       <p class="certifs-text rv rv-d2">
-        La rigueur de nos méthodes et la qualification de nos équipes garantissent des prestations conformes aux normes les plus exigeantes de l'ingénierie géotechnique et structurale.
+        La rigueur de nos methodes et la qualification de nos equipes
+        garantissent des prestations conformes aux normes les plus exigeantes
+        de l'ingenierie geotechnique et structurale.
       </p>
       <ul class="certifs-list rv rv-d3">
-        <li>Ingénieurs géotechniciens et structures diplômés</li>
-        <li>Équipements de sondage et d'essais à la pointe</li>
+        <li>Ingenieurs geotechniciens et structures diplomes</li>
+        <li>Equipements de sondage et d'essais de derniere generation</li>
         <li>Rapports conformes aux normes NF en vigueur</li>
+        <li>Expertise exigeante et independante</li>
         <li>Couverture nationale depuis 3 agences</li>
       </ul>
     </div>
 
     <div class="certifs-cards">
       <div class="certif-card rv">
-        <div class="certif-icon">OQ</div>
+        <div class="certif-badge">OQ</div>
         <h4>OPQIBI</h4>
-        <p>Qualification en ingénierie géotechnique et diagnostic structural</p>
+        <p>Qualification en ingenierie geotechnique et diagnostic structural</p>
       </div>
       <div class="certif-card rv rv-d1">
-        <div class="certif-icon">NF</div>
-        <h4>Normes NF</h4>
-        <p>Missions géotechniques conformes aux normes NF P94-500</p>
+        <div class="certif-badge">NF</div>
+        <h4>Normes NF P94-500</h4>
+        <p>Missions geotechniques conformes a la norme de reference</p>
       </div>
       <div class="certif-card rv rv-d2">
-        <div class="certif-icon">3A</div>
-        <h4>3 Agences</h4>
-        <p>Salon-de-Provence et réseau d'implantations en France</p>
+        <div class="certif-badge">RC</div>
+        <h4>Assurance RC Pro</h4>
+        <p>Responsabilite civile professionnelle adaptee a chaque mission</p>
       </div>
       <div class="certif-card rv rv-d3">
-        <div class="certif-icon">RC</div>
-        <h4>Assurance RC Pro</h4>
-        <p>Responsabilité civile professionnelle adaptée à nos missions</p>
+        <div class="certif-badge">QE</div>
+        <h4>Qualite & Environnement</h4>
+        <p>Engagement qualite dans le respect de l'environnement</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-grid-bg"></div>
-  <div class="contact-inner">
-    <div>
-      <div class="sec-label rv">Contact</div>
-      <h2 class="sec-title rv rv-d1">Parlons de votre<br><span class="serif">projet</span></h2>
-      <p class="contact-desc rv rv-d2">
-        Besoin d'une étude de sol, d'un diagnostic structural ou d'une expertise hydrogéologique ? Nos ingénieurs sont à votre écoute pour étudier votre projet.
-      </p>
-      <a href="mailto:infos@argotech-sas.fr" class="contact-email-link rv rv-d3">infos@argotech-sas.fr</a>
+<!-- IMPLANTATIONS -->
+<section class="locations" id="implantations">
+  <div class="locations-inner">
+    <div class="locations-header">
+      <div class="sec-label rv">Nos implantations</div>
+      <h2 class="sec-title rv rv-d1">Presents la ou vos <span class="light">projets</span><br>nous appellent</h2>
     </div>
 
-    <div class="contact-card-wrap">
-      <div class="contact-card rv rv-d1">
-        <div class="contact-card-label">Siège — Salon-de-Provence</div>
-        <p>
+    <div class="locations-grid">
+      <div class="loc-card hq rv">
+        <span class="loc-badge">Siege social</span>
+        <h4>Salon-de-Provence (PACA)</h4>
+        <address>
           246 Boulevard Ledru Rollin<br>
           13300 Salon-de-Provence<br><br>
+          <a href="tel:+33490841260">04 90 84 12 60</a><br>
           <a href="mailto:infos@argotech-sas.fr">infos@argotech-sas.fr</a>
-        </p>
+        </address>
+        <div class="loc-zones">
+          <span>Bouches-du-Rhone</span>
+          <span>PACA</span>
+          <span>Occitanie</span>
+          <span>Corse</span>
+        </div>
       </div>
-      <div class="contact-card rv rv-d2">
-        <div class="contact-card-label">Zone d'intervention</div>
-        <p>
-          Provence-Alpes-Côte d'Azur<br>
-          Occitanie · Auvergne-Rhône-Alpes<br>
-          3 agences en France
-        </p>
+
+      <div class="loc-card rv rv-d1">
+        <span class="loc-badge">Agence Ile-de-France</span>
+        <h4>Sainte-Genevieve-des-Bois (IDF)</h4>
+        <address>
+          15 Avenue Philippe Lebon<br>
+          91700 Sainte-Genevieve-des-Bois<br><br>
+          <a href="tel:+33186220599">01 86 22 05 99</a><br>
+          <a href="mailto:idf@argotech.fr">idf@argotech.fr</a>
+        </address>
+        <div class="loc-zones">
+          <span>Paris</span>
+          <span>Ile-de-France</span>
+          <span>Centre</span>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta" id="contact">
+  <div class="cta-grid"></div>
+  <div class="cta-inner">
+    <div class="sec-label rv">Contact</div>
+    <h2 class="rv rv-d1">Parlons de votre <span class="green">projet</span></h2>
+    <p class="cta-desc rv rv-d2">
+      Besoin d'une etude de sol, d'un diagnostic structural ou d'une expertise
+      en instrumentation ? Nos ingenieurs sont a votre ecoute pour etudier votre projet.
+    </p>
+    <a href="mailto:infos@argotech-sas.fr" class="cta-email rv rv-d3">infos@argotech-sas.fr</a>
+    <div class="cta-actions rv rv-d4">
+      <a href="tel:+33490841260" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        04 90 84 12 60
+      </a>
+      <a href="mailto:infos@argotech-sas.fr" class="btn-outline">Envoyer un email</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 ARGOTECH — Bureau d'Études Géotechnique & Diagnostic Structural</p>
-  <p><a href="#">argotech-sas.fr</a></p>
+  <p>&copy; 2025 ARGOTECH SAS — Bureau d'Etudes Geotechnique, Diagnostic & Instrumentation</p>
+  <p><a href="https://argotech-sas.fr">argotech-sas.fr</a></p>
 </footer>
 
+<!-- SCRIPTS -->
 <script>
+// Reveal on scroll
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
+// Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
+// Burger menu
 const burger = document.getElementById('burger');
 const links = document.getElementById('navLinks');
 burger.addEventListener('click', () => links.classList.toggle('open'));
 links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+// Smooth counter animation for metrics
+function animateCounters() {
+  document.querySelectorAll('.metric-num').forEach(el => {
+    const text = el.textContent.trim();
+    const match = text.match(/^(\d+)(\+?)$/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    const suffix = match[2];
+    let current = 0;
+    const step = Math.max(1, Math.floor(target / 40));
+    const interval = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current + suffix;
+      if (current >= target) clearInterval(interval);
+    }, 30);
+  });
+}
+
+const metricsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounters();
+      metricsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const metricsEl = document.querySelector('.metrics');
+if (metricsEl) metricsObs.observe(metricsEl);
 </script>
 
 </body>
