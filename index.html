@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARGOTECH — Bureau d'Études Géotechnique & Diagnostic Structural</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1B3A5C;
+  --blue-deep: #0F2640;
+  --blue-mid: #2A5580;
+  --blue-light: #3E6E9E;
+  --blue-pale: #E8EFF6;
+  --blue-ghost: #F3F7FB;
+  --terra: #C4704B;
+  --terra-light: #D4885F;
+  --terra-warm: #E8A882;
+  --terra-pale: #F5E6DC;
+  --sand: #F7F3EE;
+  --sand-warm: #EDE6DB;
+  --stone: #D5CCBF;
+  --grey: #6B7280;
+  --grey-light: #9CA3AF;
+  --charcoal: #1F2937;
+  --text: #2D3441;
+  --text-light: #5A6472;
+  --white: #FEFDFB;
+  --bg: #FAFAF7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ GRAIN ═══ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ═══ REVEAL ═══ */
+.rv {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rv.vis { opacity: 1; transform: translateY(0); }
+.rv-d1 { transition-delay: 0.1s; }
+.rv-d2 { transition-delay: 0.2s; }
+.rv-d3 { transition-delay: 0.3s; }
+.rv-d4 { transition-delay: 0.4s; }
+.rv-d5 { transition-delay: 0.5s; }
+
+/* ═══ NAV ═══ */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.3rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+}
+nav.scrolled {
+  background: rgba(250, 250, 247, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(27, 58, 92, 0.08);
+  padding: 0.9rem 3rem;
+}
+.nav-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+.nav-mark-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+}
+.nav-mark-icon span {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+.nav-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--blue-deep);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--terra); }
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--blue);
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Strata background layers */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(170deg, var(--bg) 0%, var(--sand) 40%, var(--sand-warm) 70%, var(--terra-pale) 100%);
+  z-index: 0;
+}
+
+/* Diagonal strata lines */
+.strata {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.strata-line {
+  position: absolute;
+  width: 200%;
+  height: 1px;
+  left: -20%;
+  transform-origin: center;
+}
+.strata-line:nth-child(1) { top: 25%; background: rgba(27,58,92,0.04); transform: rotate(-6deg); }
+.strata-line:nth-child(2) { top: 40%; background: rgba(196,112,75,0.05); transform: rotate(-4deg); }
+.strata-line:nth-child(3) { top: 55%; background: rgba(27,58,92,0.03); transform: rotate(-7deg); }
+.strata-line:nth-child(4) { top: 70%; background: rgba(196,112,75,0.04); transform: rotate(-3deg); }
+.strata-line:nth-child(5) { top: 85%; background: rgba(27,58,92,0.05); transform: rotate(-5deg); }
+
+/* Topo-grid pattern top-right */
+.topo-grid {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  width: 45%;
+  height: 80%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background:
+    repeating-linear-gradient(0deg, var(--blue) 0px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, var(--blue) 0px, transparent 1px, transparent 40px);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(27, 58, 92, 0.06);
+  border-left: 3px solid var(--terra);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--blue-deep);
+  margin-bottom: 1.6rem;
+  letter-spacing: -0.02em;
+}
+.hero h1 .accent {
+  color: var(--terra);
+  font-weight: 700;
+}
+.hero h1 .serif {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-light);
+  max-width: 480px;
+  margin-bottom: 2.4rem;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 2rem;
+  background: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  transition: background 0.35s;
+}
+.btn-primary:hover { background: var(--terra); }
+.btn-primary svg { width: 14px; height: 14px; }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid var(--blue-mid);
+  color: var(--blue-mid);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background 0.3s, color 0.3s;
+}
+.btn-outline:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+/* Hero right: visual block */
+.hero-visual {
+  position: relative;
+}
+.hero-visual-main {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%);
+}
+/* Geological cross-section texture */
+.hero-visual-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(175deg,
+      var(--blue-pale) 0%,
+      var(--sand-warm) 20%,
+      var(--stone) 35%,
+      var(--terra-pale) 50%,
+      var(--sand) 65%,
+      var(--blue-pale) 80%,
+      var(--sand-warm) 100%
+    );
+}
+/* Strata layers in the image */
+.hero-visual-main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      172deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(27,58,92,0.06) 18px,
+      rgba(27,58,92,0.06) 19px
+    );
+}
+.hero-visual-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem 1.4rem;
+  background: rgba(15, 38, 64, 0.85);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  z-index: 1;
+}
+.hero-visual-label strong { font-weight: 600; color: var(--terra-warm); }
+
+/* Floating stat card */
+.hero-stat-float {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: var(--white);
+  border: 1px solid rgba(27,58,92,0.08);
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 12px 32px rgba(27,58,92,0.08);
+  z-index: 2;
+}
+.hero-stat-float .num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--terra);
+  line-height: 1;
+}
+.hero-stat-float .lbl {
+  font-size: 0.68rem;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.2rem;
+}
+
+/* ═══ METRICS STRIP ═══ */
+.metrics {
+  background: var(--blue-deep);
+  padding: 3rem;
+  position: relative;
+}
+/* diagonal top edge */
+.metrics::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: var(--blue-deep);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+.metrics-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.metric {
+  text-align: center;
+  position: relative;
+}
+.metric:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(255,255,255,0.1);
+}
+.metric-num {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--terra-warm);
+  line-height: 1;
+}
+.metric-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+/* ═══ SECTION BASE ═══ */
+section { position: relative; padding: 6rem 3rem; }
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 1rem;
+}
+.sec-label::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--terra);
+}
+
+.sec-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--blue-deep);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 550px;
+}
+.sec-title .serif {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ═══ EXPERTISE ═══ */
+.expertise {
+  background: var(--white);
+}
+.expertise-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.expertise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
+  gap: 2rem;
+}
+.expertise-header p {
+  max-width: 380px;
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.exp-card {
+  padding: 2.4rem 2rem;
+  border: 1px solid rgba(27,58,92,0.06);
+  position: relative;
+  background: var(--white);
+  transition: background 0.4s, border-color 0.4s;
+  overflow: hidden;
+}
+.exp-card:hover {
+  background: var(--blue-ghost);
+  border-color: rgba(27,58,92,0.12);
+}
+/* Diagonal accent on hover */
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: var(--terra);
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.exp-card:hover::before { height: 100%; }
+
+.exp-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--terra);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.2rem;
+}
+.exp-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+}
+.exp-card p {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text-light);
+  font-weight: 300;
+}
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 1.2rem;
+}
+.exp-tags span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  background: rgba(27,58,92,0.04);
+  color: var(--blue-mid);
+  letter-spacing: 0.02em;
+}
+/* Last card spans 2 cols on wide screen */
+.exp-card.wide {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.exp-card.wide .exp-card-inner { display: contents; }
+
+/* ═══ PROJECTS ═══ */
+.projects {
+  background: var(--sand);
+  position: relative;
+}
+/* Diagonal separator */
+.projects::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--sand);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+.projects-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.projects-header { margin-bottom: 3.5rem; }
+.projects-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  max-width: 480px;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-top: 1rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.2rem;
+}
+.proj-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(27,58,92,0.06);
+  background: var(--white);
+  transition: border-color 0.3s, transform 0.4s;
+}
+.proj-card:hover {
+  border-color: var(--terra-light);
+  transform: translateY(-4px);
+}
+.proj-card.feat { grid-row: span 2; }
+
+.proj-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  position: relative;
+  overflow: hidden;
+}
+.proj-card.feat .proj-img {
+  height: 100%;
+  aspect-ratio: auto;
+}
+/* Geological texture backgrounds */
+.proj-img.geo-1 {
+  background: linear-gradient(160deg, var(--blue-pale) 0%, var(--sand-warm) 30%, var(--stone) 50%, var(--terra-pale) 70%, var(--sand) 100%);
+}
+.proj-img.geo-2 {
+  background: linear-gradient(145deg, var(--sand) 0%, var(--stone) 40%, var(--blue-pale) 70%, var(--sand-warm) 100%);
+}
+.proj-img.geo-3 {
+  background: linear-gradient(170deg, var(--terra-pale) 0%, var(--sand-warm) 35%, var(--blue-pale) 65%, var(--stone) 100%);
+}
+.proj-img.geo-4 {
+  background: linear-gradient(155deg, var(--blue-pale) 0%, var(--sand) 30%, var(--terra-pale) 60%, var(--stone) 100%);
+}
+/* Strata overlay on all */
+.proj-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(175deg, transparent 0px, transparent 22px, rgba(27,58,92,0.04) 22px, rgba(27,58,92,0.04) 23px);
+}
+
+.proj-info {
+  padding: 1.4rem 1.6rem;
+}
+.proj-info h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  margin-bottom: 0.3rem;
+}
+.proj-info p {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-weight: 400;
+}
+.proj-type {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.6rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--terra-pale);
+}
+
+/* More refs */
+.projects-more {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(27,58,92,0.08);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.projects-more-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--blue-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.projects-more-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.projects-more-tags span {
+  font-size: 0.76rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(27,58,92,0.1);
+  color: var(--text);
+  background: var(--white);
+  font-weight: 400;
+  transition: border-color 0.3s, background 0.3s;
+}
+.projects-more-tags span:hover {
+  border-color: var(--terra);
+  background: var(--terra-pale);
+}
+
+/* ═══ CERTIFICATIONS ═══ */
+.certifs {
+  background: var(--white);
+}
+.certifs-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: center;
+}
+.certifs-content .sec-title { margin-bottom: 1.4rem; }
+.certifs-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-light);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.certifs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.certifs-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.certifs-list li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+  background: var(--terra);
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 60% 100%, 0 100%);
+}
+
+.certifs-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.certif-card {
+  padding: 2rem 1.6rem;
+  border: 1px solid rgba(27,58,92,0.08);
+  background: var(--blue-ghost);
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.certif-card:hover {
+  border-color: var(--terra-light);
+  transform: translateY(-4px);
+}
+.certif-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  background: var(--blue);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+}
+.certif-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--blue-deep);
+  margin-bottom: 0.4rem;
+}
+.certif-card p {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ═══ CONTACT ═══ */
+.contact {
+  background: var(--blue-deep);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--blue-deep);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+/* Grid pattern overlay */
+.contact-grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background:
+    repeating-linear-gradient(0deg, var(--white) 0px, transparent 1px, transparent 50px),
+    repeating-linear-gradient(90deg, var(--white) 0px, transparent 1px, transparent 50px);
+  pointer-events: none;
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contact .sec-label { color: var(--terra-warm); }
+.contact .sec-label::before { background: var(--terra-warm); }
+.contact .sec-title { color: var(--white); max-width: 400px; }
+.contact .sec-title .serif { color: var(--terra-warm); }
+
+.contact-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  margin-top: 1.2rem;
+  font-weight: 300;
+  max-width: 400px;
+}
+.contact-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--terra-warm);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(196,112,75,0.3);
+  padding-bottom: 4px;
+  transition: border-color 0.3s;
+}
+.contact-email-link:hover { border-color: var(--terra); }
+
+.contact-card-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.contact-card {
+  padding: 1.8rem;
+  border: 1px solid rgba(196,112,75,0.12);
+  background: rgba(255,255,255,0.03);
+  transition: border-color 0.3s;
+}
+.contact-card:hover { border-color: rgba(196,112,75,0.3); }
+.contact-card-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--terra-warm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.7rem;
+}
+.contact-card p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.contact-card a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.contact-card a:hover { color: var(--terra-warm); }
+
+/* ═══ FOOTER ═══ */
+footer {
+  background: var(--blue-deep);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 1.8rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer p {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+}
+footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  nav.scrolled { padding: 0.8rem 1.5rem; }
+  .nav-links { display: none; }
+  .burger { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 999;
+  }
+  .nav-links.open a { font-size: 1.1rem; color: var(--blue-deep); }
+
+  section { padding: 4rem 1.5rem; }
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.4rem; }
+  .hero-visual { order: -1; }
+  .hero-stat-float { top: -10px; right: -10px; }
+  .topo-grid { display: none; }
+
+  .metrics::before { height: 20px; top: -20px; }
+  .metrics-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .metric:nth-child(2)::after { display: none; }
+
+  .expertise-header { flex-direction: column; align-items: flex-start; }
+  .expertise-grid { grid-template-columns: 1fr; }
+  .exp-card.wide { grid-column: span 1; display: block; }
+
+  .projects-grid { grid-template-columns: 1fr; }
+  .proj-card.feat { grid-row: span 1; }
+
+  .certifs-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .certifs-cards { grid-template-columns: 1fr 1fr; }
+
+  .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact::before { height: 25px; top: -25px; }
+
+  footer { flex-direction: column; gap: 0.6rem; text-align: center; }
+}
+
+@media (max-width: 500px) {
+  .hero h1 { font-size: 1.9rem; }
+  .sec-title { font-size: 1.7rem; }
+  .metrics-inner { grid-template-columns: 1fr 1fr; }
+  .certifs-cards { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-mark">
+    <div class="nav-mark-icon"><span>A</span></div>
+    <span class="nav-name">Argotech</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#projets">Références</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="strata">
+    <div class="strata-line"></div>
+    <div class="strata-line"></div>
+    <div class="strata-line"></div>
+    <div class="strata-line"></div>
+    <div class="strata-line"></div>
+  </div>
+  <div class="topo-grid"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag rv">Bureau d'Études Géotechnique</div>
+      <h1 class="rv rv-d1">
+        L'expertise<br>
+        du <span class="serif">sol</span> à la<br>
+        <span class="accent">structure</span>
+      </h1>
+      <p class="hero-desc rv rv-d2">
+        Études géotechniques, diagnostic structural et hydrogéologie — ARGOTECH accompagne maîtres d'ouvrage, architectes et entreprises sur les projets les plus exigeants du sud de la France.
+      </p>
+      <div class="hero-actions rv rv-d3">
+        <a href="#contact" class="btn-primary">
+          Nous contacter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#expertise" class="btn-outline">Nos expertises</a>
+      </div>
+    </div>
+
+    <div class="hero-visual rv rv-d2">
+      <div class="hero-stat-float">
+        <div class="num">250+</div>
+        <div class="lbl">Clients accompagnés</div>
+      </div>
+      <div class="hero-visual-main">
+        <div class="hero-visual-label">
+          <strong>Diagnostic structural</strong> — Analyse et expertise d'ouvrages d'art en région PACA
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="metrics-inner">
+    <div class="metric rv">
+      <div class="metric-num">250+</div>
+      <div class="metric-label">Clients</div>
+    </div>
+    <div class="metric rv rv-d1">
+      <div class="metric-num">3</div>
+      <div class="metric-label">Agences en France</div>
+    </div>
+    <div class="metric rv rv-d2">
+      <div class="metric-num">5</div>
+      <div class="metric-label">Domaines d'expertise</div>
+    </div>
+    <div class="metric rv rv-d3">
+      <div class="metric-num">OPQIBI</div>
+      <div class="metric-label">Qualification certifiée</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERTISE -->
+<section class="expertise" id="expertise">
+  <div class="expertise-inner">
+    <div class="expertise-header">
+      <div>
+        <div class="sec-label rv">Nos expertises</div>
+        <h2 class="sec-title rv rv-d1">Cinq domaines pour<br>une vision <span class="serif">complète</span></h2>
+      </div>
+      <p class="rv rv-d2">
+        De la reconnaissance des sols à l'inspection des structures, nous couvrons l'ensemble de la chaîne technique.
+      </p>
+    </div>
+
+    <div class="expertise-grid">
+      <div class="exp-card rv">
+        <div class="exp-num">01</div>
+        <h3>Géotechnique</h3>
+        <p>Études de sol, sondages et essais in situ pour caractériser les terrains et dimensionner les fondations adaptées à chaque projet.</p>
+        <div class="exp-tags">
+          <span>Sondages</span>
+          <span>Essais in situ</span>
+          <span>Fondations spéciales</span>
+        </div>
+      </div>
+
+      <div class="exp-card rv rv-d1">
+        <div class="exp-num">02</div>
+        <h3>Diagnostic Structural</h3>
+        <p>Expertise des structures béton, bois et métal. Pathologie des ouvrages, analyse de fissuration et recommandations de confortement.</p>
+        <div class="exp-tags">
+          <span>Béton</span>
+          <span>Bois</span>
+          <span>Métal</span>
+          <span>Pathologie</span>
+        </div>
+      </div>
+
+      <div class="exp-card rv rv-d2">
+        <div class="exp-num">03</div>
+        <h3>Hydrogéologie</h3>
+        <p>Études hydrogéologiques, gestion des eaux souterraines, piézométrie et modélisation des écoulements pour vos projets.</p>
+        <div class="exp-tags">
+          <span>Piézométrie</span>
+          <span>Eaux souterraines</span>
+          <span>Modélisation</span>
+        </div>
+      </div>
+
+      <div class="exp-card rv rv-d3">
+        <div class="exp-num">04</div>
+        <h3>Contrôle Extérieur</h3>
+        <p>Supervision de travaux et contrôle qualité chantier. Essais de conformité pour garantir le respect des spécifications techniques.</p>
+        <div class="exp-tags">
+          <span>Supervision</span>
+          <span>Qualité</span>
+          <span>Conformité</span>
+        </div>
+      </div>
+
+      <div class="exp-card wide rv rv-d4">
+        <div>
+          <div class="exp-num">05</div>
+          <h3>Assistance Technique</h3>
+        </div>
+        <div>
+          <p>Maîtrise d'œuvre géotechnique et assistance aux maîtres d'ouvrage. Nous vous accompagnons de la phase conception à la réception des travaux.</p>
+          <div class="exp-tags">
+            <span>Maîtrise d'œuvre</span>
+            <span>AMO</span>
+            <span>Suivi de chantier</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projets">
+  <div class="projects-inner">
+    <div class="projects-header">
+      <div class="sec-label rv">Références</div>
+      <h2 class="sec-title rv rv-d1">Des projets d'envergure<br>en <span class="serif">région PACA</span> et au-delà</h2>
+      <p class="projects-subtitle rv rv-d2">
+        Infrastructures, ouvrages d'art, bâtiments publics — notre expérience couvre les défis techniques les plus variés.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="proj-card feat rv">
+        <div class="proj-img geo-1" role="img" aria-label="Stade Vélodrome de Marseille — diagnostic structural complet de l'enceinte sportive"></div>
+        <div class="proj-info">
+          <h4>Stade Vélodrome de Marseille</h4>
+          <p>Diagnostic structural complet de l'enceinte sportive</p>
+          <span class="proj-type">Diagnostic structural</span>
+        </div>
+      </div>
+
+      <div class="proj-card rv rv-d1">
+        <div class="proj-img geo-2" role="img" aria-label="Funiculaire des Arcs — études géotechniques en terrain montagneux"></div>
+        <div class="proj-info">
+          <h4>Funiculaire des Arcs</h4>
+          <p>Études géotechniques en montagne</p>
+          <span class="proj-type">Géotechnique</span>
+        </div>
+      </div>
+
+      <div class="proj-card rv rv-d2">
+        <div class="proj-img geo-3" role="img" aria-label="Viaducs autoroutiers — inspection et diagnostic d'ouvrages d'art"></div>
+        <div class="proj-info">
+          <h4>Viaducs Autoroutiers</h4>
+          <p>Inspection et diagnostic d'ouvrages d'art</p>
+          <span class="proj-type">Inspection</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-more rv">
+      <span class="projects-more-label">Aussi parmi nos références :</span>
+      <div class="projects-more-tags">
+        <span>Infrastructures PACA</span>
+        <span>Construction neuve</span>
+        <span>Réhabilitation</span>
+        <span>Ouvrages d'art</span>
+        <span>Bâtiments publics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certifs" id="certifications">
+  <div class="certifs-inner">
+    <div class="certifs-content">
+      <div class="sec-label rv">Engagements</div>
+      <h2 class="sec-title rv rv-d1">Qualifiés, certifiés,<br><span class="serif">engagés</span></h2>
+      <p class="certifs-text rv rv-d2">
+        La rigueur de nos méthodes et la qualification de nos équipes garantissent des prestations conformes aux normes les plus exigeantes de l'ingénierie géotechnique et structurale.
+      </p>
+      <ul class="certifs-list rv rv-d3">
+        <li>Ingénieurs géotechniciens et structures diplômés</li>
+        <li>Équipements de sondage et d'essais à la pointe</li>
+        <li>Rapports conformes aux normes NF en vigueur</li>
+        <li>Couverture nationale depuis 3 agences</li>
+      </ul>
+    </div>
+
+    <div class="certifs-cards">
+      <div class="certif-card rv">
+        <div class="certif-icon">OQ</div>
+        <h4>OPQIBI</h4>
+        <p>Qualification en ingénierie géotechnique et diagnostic structural</p>
+      </div>
+      <div class="certif-card rv rv-d1">
+        <div class="certif-icon">NF</div>
+        <h4>Normes NF</h4>
+        <p>Missions géotechniques conformes aux normes NF P94-500</p>
+      </div>
+      <div class="certif-card rv rv-d2">
+        <div class="certif-icon">3A</div>
+        <h4>3 Agences</h4>
+        <p>Salon-de-Provence et réseau d'implantations en France</p>
+      </div>
+      <div class="certif-card rv rv-d3">
+        <div class="certif-icon">RC</div>
+        <h4>Assurance RC Pro</h4>
+        <p>Responsabilité civile professionnelle adaptée à nos missions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid-bg"></div>
+  <div class="contact-inner">
+    <div>
+      <div class="sec-label rv">Contact</div>
+      <h2 class="sec-title rv rv-d1">Parlons de votre<br><span class="serif">projet</span></h2>
+      <p class="contact-desc rv rv-d2">
+        Besoin d'une étude de sol, d'un diagnostic structural ou d'une expertise hydrogéologique ? Nos ingénieurs sont à votre écoute pour étudier votre projet.
+      </p>
+      <a href="mailto:infos@argotech-sas.fr" class="contact-email-link rv rv-d3">infos@argotech-sas.fr</a>
+    </div>
+
+    <div class="contact-card-wrap">
+      <div class="contact-card rv rv-d1">
+        <div class="contact-card-label">Siège — Salon-de-Provence</div>
+        <p>
+          246 Boulevard Ledru Rollin<br>
+          13300 Salon-de-Provence<br><br>
+          <a href="mailto:infos@argotech-sas.fr">infos@argotech-sas.fr</a>
+        </p>
+      </div>
+      <div class="contact-card rv rv-d2">
+        <div class="contact-card-label">Zone d'intervention</div>
+        <p>
+          Provence-Alpes-Côte d'Azur<br>
+          Occitanie · Auvergne-Rhône-Alpes<br>
+          3 agences en France
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 ARGOTECH — Bureau d'Études Géotechnique & Diagnostic Structural</p>
+  <p><a href="#">argotech-sas.fr</a></p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+const burger = document.getElementById('burger');
+const links = document.getElementById('navLinks');
+burger.addEventListener('click', () => links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
