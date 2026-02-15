@@ -103,31 +103,18 @@ nav.scrolled {
   text-decoration: none;
 }
 .nav-logo {
-  width: 36px;
+  width: 120px;
   height: 36px;
-  background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
   position: relative;
   overflow: hidden;
 }
-.nav-logo::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--green);
-}
-.nav-logo span {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 900;
-  font-size: 1rem;
-  color: var(--white);
-  letter-spacing: -0.03em;
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .nav-name {
   font-family: 'Raleway', sans-serif;
@@ -376,43 +363,12 @@ nav.scrolled {
   box-shadow: 0 20px 60px rgba(24, 61, 86, 0.12);
 }
 
-/* Sophisticated geological placeholder */
-.hero-img-main::before {
-  content: '';
+.hero-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(113, 165, 199, 0.3) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 60%, rgba(166, 198, 37, 0.15) 0%, transparent 50%),
-    linear-gradient(165deg,
-      #1a3d56 0%,
-      #1f5275 15%,
-      #2a6a90 30%,
-      #4a8aaa 42%,
-      #71a5c7 52%,
-      #8eb8a0 60%,
-      #a6c625 68%,
-      #8eb880 75%,
-      #71a5c7 82%,
-      #4a7a9a 90%,
-      #1a3d56 100%
-    );
-}
-
-/* Bore-hole / cross-section overlay */
-.hero-img-main::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(170deg,
-      transparent 0px, transparent 24px,
-      rgba(255,255,255,0.06) 24px, rgba(255,255,255,0.06) 25px
-    ),
-    repeating-linear-gradient(80deg,
-      transparent 0px, transparent 60px,
-      rgba(255,255,255,0.03) 60px, rgba(255,255,255,0.03) 61px
-    );
 }
 
 .hero-img-label {
@@ -748,29 +704,15 @@ section { position: relative; padding: 6rem 3rem; }
   aspect-ratio: auto;
 }
 
-/* Geological/engineering placeholder backgrounds */
-.ref-img.geo-stade {
-  background:
-    radial-gradient(ellipse at 40% 50%, rgba(113, 165, 199, 0.4) 0%, transparent 60%),
-    linear-gradient(160deg, #1a3d56 0%, #2a6a90 30%, #4a8aaa 50%, #71a5c7 70%, #d4e5f0 100%);
+.ref-img {
+  background: var(--blue-ghost);
 }
-.ref-img.geo-funiculaire {
-  background:
-    radial-gradient(ellipse at 50% 40%, rgba(166, 198, 37, 0.3) 0%, transparent 55%),
-    linear-gradient(170deg, #2a5540 0%, #4a8060 25%, #7aaa70 45%, #a6c625 65%, #e8f0c9 100%);
-}
-.ref-img.geo-viaduc {
-  background:
-    radial-gradient(ellipse at 60% 55%, rgba(24, 61, 86, 0.3) 0%, transparent 50%),
-    linear-gradient(155deg, #3a3a3a 0%, #5a6a6a 20%, #7a8a8a 40%, #9aaa9a 60%, #bacebd 80%, #d4e5f0 100%);
-}
-/* Strata overlay */
-.ref-img::after {
-  content: '';
+.ref-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
   inset: 0;
-  background:
-    repeating-linear-gradient(172deg, transparent 0px, transparent 20px, rgba(255,255,255,0.05) 20px, rgba(255,255,255,0.05) 21px);
 }
 
 /* Icon overlay on image */
@@ -1217,7 +1159,7 @@ footer a:hover { color: var(--green); }
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-brand">
-    <div class="nav-logo"><span>A</span></div>
+    <div class="nav-logo"><img src="https://argotech.fr/wp-content/uploads/2021/08/logo.png" alt="Argotech Logo"></div>
     <span class="nav-name">Argotech</span>
   </a>
   <ul class="nav-links" id="navLinks">
@@ -1288,6 +1230,7 @@ footer a:hover { color: var(--green); }
         </div>
       </div>
       <div class="hero-img-main">
+        <img src="https://argotech.fr/wp-content/uploads/2021/08/home.jpg" alt="Argotech - Bureau d'études géotechnique" loading="lazy">
         <div class="hero-img-label">
           <div class="hero-img-label-text">
             <strong>Diagnostic structural</strong>
@@ -1440,10 +1383,8 @@ footer a:hover { color: var(--green); }
 
     <div class="refs-projects">
       <div class="ref-card feat rv">
-        <div class="ref-img geo-stade" role="img" aria-label="Stade Vélodrome de Marseille">
-          <div class="ref-img-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/></svg>
-          </div>
+        <div class="ref-img" role="img" aria-label="Stade Vélodrome de Marseille">
+          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&fit=crop" alt="Stade Vélodrome de Marseille" loading="lazy">
         </div>
         <div class="ref-info">
           <h4>Stade Vélodrome de Marseille</h4>
@@ -1453,10 +1394,8 @@ footer a:hover { color: var(--green); }
       </div>
 
       <div class="ref-card rv rv-d1">
-        <div class="ref-img geo-funiculaire" role="img" aria-label="Funiculaire des Arcs">
-          <div class="ref-img-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-          </div>
+        <div class="ref-img" role="img" aria-label="Funiculaire des Arcs">
+          <img src="https://images.unsplash.com/photo-1508361727343-ca787442dcd7?w=800&h=500&fit=crop" alt="Études géotechniques en montagne" loading="lazy">
         </div>
         <div class="ref-info">
           <h4>Funiculaire des Arcs</h4>
@@ -1466,10 +1405,8 @@ footer a:hover { color: var(--green); }
       </div>
 
       <div class="ref-card rv rv-d2">
-        <div class="ref-img geo-viaduc" role="img" aria-label="Viaducs autoroutiers">
-          <div class="ref-img-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 18h20"/><path d="M6 18V6"/><path d="M18 18V6"/><path d="M2 6h20"/><path d="M12 18V6"/></svg>
-          </div>
+        <div class="ref-img" role="img" aria-label="Viaducs autoroutiers">
+          <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&h=500&fit=crop" alt="Inspection d'ouvrages d'art" loading="lazy">
         </div>
         <div class="ref-info">
           <h4>Viaducs Autoroutiers</h4>
